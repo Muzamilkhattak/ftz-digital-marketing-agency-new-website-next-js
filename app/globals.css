@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+:root {
+  --primary-navy: #0A1F44;
+  --electric-blue: #2F80ED;
+  --white: #FFFFFF;
+  --soft-gray: #B0B7C3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FFFFFF !important;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FFFFFF !important;
+  color: #0A1F44;
+  overflow-x: hidden;
+  /* Performance optimizations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Performance: GPU acceleration for animations */
+.animate-pulse,
+.animate-spin,
+[class*="animate-"] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--electric-blue);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--soft-gray);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(10, 31, 68, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Swiper styling */
+.swiper {
+  padding-bottom: 2rem;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: rgba(47, 128, 237, 0.9);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(47, 128, 237, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  transform: scale(1.05);
+  background: rgba(47, 128, 237, 1);
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255,255,255,0.4);
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  width: 18px;
+  border-radius: 9999px;
+  background: #2F80ED;
+}
+
+/* Typewriter cursor styling */
+.react-type-animation-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--electric-blue);
+  margin-left: 2px;
+  animation: blink 0.85s infinite;
+  vertical-align: baseline;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Button shine effect */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateX(-100%) translateY(-100%) rotate(45deg);
+}
+
+.btn-shine:hover::before {
+  animation: shine 0.8s ease-in-out;
+}
+
+/* Pulse animation for live indicators */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(47, 128, 237, 0.6);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 15px rgba(47, 128, 237, 0.9);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Override text colors for white background */
+body:not(.bg-primary-navy) .text-white:not(.bg-primary-navy .text-white):not(.bg-gradient-to-br .text-white) {
+  color: #0A1F44 !important;
+}
+
+/* Headings on white backgrounds should be navy */
+section.bg-white h1,
+section.bg-white h2,
+section.bg-white h3,
+section.bg-white h4,
+section.bg-white h5,
+section.bg-white h6 {
+  color: #0A1F44 !important;
+}
+
+/* Headings on navy backgrounds should be white */
+section.bg-primary-navy h1,
+section.bg-primary-navy h2,
+section.bg-primary-navy h3,
+section.bg-primary-navy h4,
+section.bg-primary-navy h5,
+section.bg-primary-navy h6,
+section[class*="bg-gradient-to"] h1,
+section[class*="bg-gradient-to"] h2,
+section[class*="bg-gradient-to"] h3,
+section[class*="bg-gradient-to"] h4,
+section[class*="bg-gradient-to"] h5,
+section[class*="bg-gradient-to"] h6 {
+  color: #FFFFFF !important;
+}
+
+/* Portfolio project titles should stay white on image cards */
+section.bg-white h3.portfolio-project-title,
+section.bg-white h4.portfolio-project-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* Service card titles should stay white even inside white sections */
+section.bg-white .service-card h3,
+.service-card h3 {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.42);
+}
+
+section.bg-white p {
+  color: #0A1F44;
+}
+
+span {
+  color: inherit;
+}
+
+/* Keep specific elements white where needed */
+button.bg-accent-blue,
+button.bg-accent-blue *,
+.bg-accent-blue .text-white,
+.bg-primary-navy .text-white,
+section[class*="bg-gradient-to"] .text-white,
+a.bg-accent-blue,
+a.bg-accent-blue * {
+  color: #FFFFFF !important;
+}
+
+/* Icons should be dark */
+svg {
+  color: #0A1F44;
+}
+
+/* Buttons with accent blue background should have white text */
+.bg-accent-blue {
+  color: #FFFFFF !important;
+}
+
+/* Text secondary should be readable */
+.text-text-secondary {
+  color: #6B7280 !important;
+}
+
+/* Gradient text should remain visible */
+.gradient-text {
+  background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Labels and descriptions */
+label {
+  color: #0A1F44 !important;
+}
+
+/* Input and textarea styling for white background */
+input,
+textarea,
+select {
+  background-color: #F9FAFB !important;
+  border-color: #E5E7EB !important;
+  color: #0A1F44 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #2F80ED !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.1);
+}
+
+/* Links */
+a {
+  color: #2F80ED;
+}
+
+a:hover {
+  color: #1E40AF;
+}
+
+/* Contact page underline style */
+.contact-underline-field {
+  background-color: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid #D1D5DB !important;
+  border-radius: 0 !important;
+  padding: 0.8rem 0 !important;
+  box-shadow: none !important;
+  color: #0A1F44 !important;
+  transition: border-color 0.3s ease !important;
+}
+
+.contact-underline-field:focus {
+  border-bottom-color: #2F80ED !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.contact-underline-textarea {
+  min-height: 110px;
+}
