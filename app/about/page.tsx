@@ -161,10 +161,10 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-gray-700 font-body text-lg leading-relaxed">
                 <p>
-                  We're a full-service digital marketing agency that helps ambitious brands scale faster. From startups to established businesses, we create campaigns that drive measurable growth.
+                  We&apos;re a full-service digital marketing agency that helps ambitious brands scale faster. From startups to established businesses, we create campaigns that drive measurable growth.
                 </p>
                 <p>
-                  Our team combines creative thinking with data-driven strategy to deliver results that matter—more leads, higher conversions, and real revenue growth. We don't just run campaigns; we build marketing systems that work.
+                  Our team combines creative thinking with data-driven strategy to deliver results that matter—more leads, higher conversions, and real revenue growth. We don&apos;t just run campaigns; we build marketing systems that work.
                 </p>
                 <p>
                   What sets us apart? We think like business owners. Every decision, every campaign, every dollar spent is focused on one thing: growing your bottom line.
@@ -240,7 +240,7 @@ export default function AboutPage() {
                 Your Growth Partner, Not Just Another Agency
               </h2>
               <p className="text-gray-700 font-body text-lg leading-relaxed mb-8">
-                We're not here to sell you services you don't need. We're here to help you grow, period.
+                We&apos;re not here to sell you services you don&apos;t need. We&apos;re here to help you grow, period.
               </p>
 
               <div className="space-y-6">
@@ -341,7 +341,7 @@ export default function AboutPage() {
               Ready to Scale Your Business?
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto font-body mb-12">
-              Let's build a marketing strategy that drives real revenue. Book a free consultation today.
+              Let&apos;s build a marketing strategy that drives real revenue. Book a free consultation today.
             </p>
             <Link href="/contact" className="px-10 py-5 bg-accent-blue text-white rounded-lg font-body font-semibold text-lg hover:bg-opacity-90 transition-all btn-shine shadow-2xl shadow-accent-blue/30 inline-block">
               Book a Call

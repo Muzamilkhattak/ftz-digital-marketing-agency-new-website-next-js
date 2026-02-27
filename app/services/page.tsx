@@ -714,7 +714,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6" style={{ color: '#FFFFFF' }}>
-              Let's Turn Your Ideas Into Measurable Growth
+              Let&apos;s Turn Your Ideas Into Measurable Growth
             </h2>
             <p className="text-xl max-w-2xl mx-auto font-body mb-12" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
               Ready to scale your business with smart marketing solutions?

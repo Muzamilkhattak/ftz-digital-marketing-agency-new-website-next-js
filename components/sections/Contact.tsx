@@ -82,7 +82,7 @@ export default function Contact() {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto font-body">
-            Ready to transform your brand? Let's start a conversation
+            Ready to transform your brand? Let&apos;s start a conversation
           </p>
         </motion.div>
 
@@ -97,7 +97,7 @@ export default function Contact() {
             <div>
               <h3 className="text-3xl font-bold text-white mb-6 font-heading">Contact Information</h3>
               <p className="text-text-secondary mb-8 font-body leading-relaxed">
-                Have a project in mind? We'd love to hear from you. Send us a message and we'll
+                Have a project in mind? We&apos;d love to hear from you. Send us a message and we&apos;ll
                 respond as soon as possible.
               </p>
             </div>

@@ -102,7 +102,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="text-xl text-white mb-8 leading-relaxed font-body">
-                "{testimonials[currentIndex].text}"
+                &quot;{testimonials[currentIndex].text}&quot;
               </p>
               <div className="flex items-center gap-4">
                 <img
@@ -152,7 +152,7 @@ export default function Testimonials() {
                   <StarIcon key={i} className="text-accent-blue fill-accent-blue text-sm" />
                 ))}
               </div>
-              <p className="text-text-secondary text-sm mb-4 line-clamp-3 font-body">"{testimonial.text}"</p>
+              <p className="text-text-secondary text-sm mb-4 line-clamp-3 font-body">&quot;{testimonial.text}&quot;</p>
               <div className="flex items-center gap-3">
                 <img
                   src={testimonial.image}
