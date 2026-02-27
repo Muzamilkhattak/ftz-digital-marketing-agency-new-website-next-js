@@ -2,7 +2,8 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FiStar, FiQuote } from 'react-icons/fi';
+import { FiStar } from 'react-icons/fi';
+import { FaQuoteLeft } from 'react-icons/fa6';
 
 const testimonials = [
   {
@@ -47,7 +48,7 @@ export default function Testimonials() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const StarIcon = FiStar ?? (() => null);
-  const QuoteIcon = FiQuote ?? (() => null);
+  const QuoteIcon = FaQuoteLeft ?? (() => null);
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -6,11 +6,11 @@ export default function FluidCursor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvasElement = canvasRef.current;
+    if (!canvasElement) return;
 
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+    canvasElement.width = canvasElement.clientWidth;
+    canvasElement.height = canvasElement.clientHeight;
 
     const config = {
       TEXTURE_DOWNSAMPLE: 1,
@@ -52,11 +52,17 @@ export default function FluidCursor() {
     pointers.push(pointerPrototype());
 
     // Get WebGL context
-    const gl = canvas.getContext('webgl2', { alpha: false, depth: false, stencil: false, antialias: false });
-    if (!gl) {
+    const glContext = canvasElement.getContext('webgl2', {
+      alpha: false,
+      depth: false,
+      stencil: false,
+      antialias: false,
+    });
+    if (!glContext) {
       console.error('WebGL2 not supported');
       return;
     }
+    const gl: WebGL2RenderingContext = glContext;
 
     const ext = {
       formatRGBA: { internalFormat: gl.RGBA16F, format: gl.RGBA },
@@ -370,8 +376,8 @@ export default function FluidCursor() {
     function splat(x: number, y: number, dx: number, dy: number, color: number[]) {
       splatProgram.bind();
       gl.uniform1i(splatProgram.uniforms.uTarget, velocity.read.texture);
-      gl.uniform1f(splatProgram.uniforms.aspectRatio, canvas.width / canvas.height);
-      gl.uniform2f(splatProgram.uniforms.point, x / canvas.width, 1.0 - y / canvas.height);
+      gl.uniform1f(splatProgram.uniforms.aspectRatio, canvasElement.width / canvasElement.height);
+      gl.uniform2f(splatProgram.uniforms.point, x / canvasElement.width, 1.0 - y / canvasElement.height);
       gl.uniform3f(splatProgram.uniforms.color, dx, -dy, 1.0);
       gl.uniform1f(splatProgram.uniforms.radius, config.SPLAT_RADIUS);
       blit(velocity.write.fbo);
@@ -386,8 +392,8 @@ export default function FluidCursor() {
     function multipleSplats(amount: number) {
       for (let i = 0; i < amount; i++) {
         const color = [0.18, 0.5, 0.93]; // Electric blue
-        const x = canvas.width * Math.random();
-        const y = canvas.height * Math.random();
+        const x = canvasElement.width * Math.random();
+        const y = canvasElement.height * Math.random();
         const dx = 1000 * (Math.random() - 0.5);
         const dy = 1000 * (Math.random() - 0.5);
         splat(x, y, dx, dy, color);
@@ -395,9 +401,9 @@ export default function FluidCursor() {
     }
 
     function resizeCanvas() {
-      if (canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight) {
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
+      if (canvasElement.width !== canvasElement.clientWidth || canvasElement.height !== canvasElement.clientHeight) {
+        canvasElement.width = canvasElement.clientWidth;
+        canvasElement.height = canvasElement.clientHeight;
         initFramebuffers();
       }
     }
@@ -507,13 +513,13 @@ export default function FluidCursor() {
       pointers[0].down = false;
     };
 
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mousedown', handleMouseDown);
+    canvasElement.addEventListener('mousemove', handleMouseMove);
+    canvasElement.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      canvas.removeEventListener('mousemove', handleMouseMove);
-      canvas.removeEventListener('mousedown', handleMouseDown);
+      canvasElement.removeEventListener('mousemove', handleMouseMove);
+      canvasElement.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);

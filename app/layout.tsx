@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import CursorLines from "@/components/CursorLines";
+import dynamic from "next/dynamic";
+
+// Lazy load cursor effect for better initial load
+const CursorLines = dynamic(() => import("@/components/CursorLines"), { ssr: false });
 
 export const metadata: Metadata = {
   title: "FTZ Digital - Transform Your Brand with 30+ Digital Solutions",
@@ -12,6 +15,7 @@ export const metadata: Metadata = {
     description: "Premium marketing agency offering 30+ digital solutions",
     type: "website",
   },
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 };
 
 export default function RootLayout({
@@ -25,6 +29,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <meta name="theme-color" content="#0A1F44" />
       </head>
       <body className="antialiased bg-white">
         <CursorLines />

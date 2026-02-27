@@ -10,7 +10,7 @@ export default function FloatingShapes() {
   const sphere2Ref = useRef<Mesh>(null);
   const cubeRef = useRef<Mesh>(null);
 
-  useFrame((state) => {
+  useFrame((state: { clock: { elapsedTime: number } }) => {
     if (sphere1Ref.current) {
       sphere1Ref.current.rotation.x += 0.01;
       sphere1Ref.current.rotation.y += 0.01;

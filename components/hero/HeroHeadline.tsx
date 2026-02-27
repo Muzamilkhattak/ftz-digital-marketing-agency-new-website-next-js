@@ -59,14 +59,6 @@ export default function HeroHeadline() {
             style={{
               display: 'inline-block',
             }}
-            cursorStyle={{
-              display: 'inline-block',
-              width: '3px',
-              height: '1em',
-              background: '#2F80ED',
-              marginLeft: '2px',
-              animation: 'blink 0.85s infinite',
-            }}
           />
         </h2>
       </motion.div>
