@@ -16,10 +16,6 @@ const nextConfig = {
   swcMinify: true,
   // Optimize production builds
   productionBrowserSourceMaps: false,
-  // Optimize CSS
-  experimental: {
-    optimizeCss: true,
-  },
   // Compress responses
   compress: true,
   // Optimize fonts
